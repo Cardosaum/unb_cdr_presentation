@@ -1,40 +1,388 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Antibody complementarity determining region design using high-capacity machine learning - Matheus Cardoso</title>
+
+		<meta name="description" content="Presentation for weekly meeting - Immunology Lab UnB">
+		<meta name="author" content="Matheus Cardoso de Souza">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/night.css" id="theme">
 
-		<!-- Theme used for syntax highlighted code -->
+		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
 	</head>
+
 	<body>
+
 		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+            <br>
+				  <h4>Antibody complementarity determining region design using high-capacity machine learning</h4>
+          <div style="font-size:80%">Bioinformatics, Volume 36, Issue 7, 1 April 2020</div>
+          <br>
+				  <a href="https://doi.org/10.1093/bioinformatics/btz895">
+				  	<img data-src="img/main.png" alt="main paper image" style="margin: 0 auto 4rem auto; background: transparent;" class="paper-main-image">
+			  	</a>
+					<p>
+              <br>
+						  <small><sub>Presentation by <a href="https://mcscv.netlify.app/">Matheus Cardoso</a></sub></small>
+					</p>
+				</section>
+
+        <section>
+            <section>
+                <h2>Overview</h2>
+            </section>
+            <section>
+                <h3>Motivação</h3>
+                <br>
+                <p>Criar um modelo que apresente:</p>
+                <br>
+                <small>
+                    <div class="fragment fade-in" style="text-align:left">Anticorpos com efeito preciso (sem efeitos colaterais);</div>
+                    <br>
+                    <div class="fragment fade-in" style="text-align:left">Modelo baseado em seleção aleatória (phage-display) que permita correlação entre sequência do anticorpo e propriedades desejadas.</div>
+                </small>
+            </section>
+            <section>
+                <h3>Resultados</h3>
+                <br>
+                <small>
+						        <p class="fragment fade-in" style="text-align:left">Criação de anticorpos com afinidade superior à candidatos propostos por técnica de phage-display.</p>
+                    <br>
+						        <p class="fragment fade-in" style="text-align:left">Demostração de que modelos computacionais podem ser usados para aumentar especificidade de anticorpos de uma maneira modular.</p>
+                </small>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Entendendo o problema</h3>
+            </section>
+            <section>
+                <div>Possíveis métodos para seleção de anticorpos:</div>
+                <br>
+                <small>
+                    <ul>
+                        <li style="font-style:italic">in vivo;</li>
+                        <li style="font-style:italic">in vitro;</li>
+                        <li style="font-style:italic">in silico.</li>
+                    </ul>
+                </small>
+            </section>
+        </section>
+
+        <section>
+            <h3 style="font-style:italic">in vivo</h3>
+            <br>
+            <br>
+				  	<img data-src="img/invivo.png" style="margin: 0 auto 4rem auto;">
+        </section>
+
+        <section>
+            <section>
+                <h3 style="font-style:italic">in vitro</h3>
+                <br>
+                <br>
+				  	    <img data-src="img/invitro.png" style="margin: 0 auto 4rem auto;">
+            </section>
+            <section>
+                <h4>Prós</h4>
+                <br>
+                <small>
+                <ul>
+                        <li>Descoberta de anticorpos sem necessitar da estrutura molecular do alvo</li>
+                </ul>
+                </small>
+            </section>
+            <section>
+                <h4>Contras</h4>
+                <br>
+                <small>
+                    <ul>
+                        <li>São métodos empíricos;</li>
+                        <li>Relativamente demorados e caros;</li>
+                        <li>Não permitem sucessiva otimização dos anticorpos.</li>
+                    </ul>
+                </small>
+            </section>
+        </section>
+
+        <section>
+            <section>
+            <h3 style="font-style:italic">in silico</h3>
+            <br>
+            <br>
+				  	<img data-src="img/insilico.png" style="margin: 0 auto 4rem auto;">
+            </section>
+            <section>
+                <h4>Prós</h4>
+                <br>
+                <small>
+                    <ul>
+                        <li>Econômico;</li>
+                        <li>Rápido;</li>
+                        <li>Permite abordagem modular;</li>
+                        <li>Permite futura otimização dos anticorpos.</li>
+                    </ul>
+                </small>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h4>Por que mais um modelo computacional?</h4>
+            </section>
+            <section>
+                <h5>Modelos atuais:</h5>
+                <br>
+                <small>
+                <ul>
+                    <li>Necessitam da estrutura molecular Alvo;</li>
+                    <br>
+                    <li>Baseiam-se em minimizar energia livre da interação Anticorpo-Alvo (não necessariamente implica em alta afinidade com o Alvo).</li>
+                </ul>
+                </small>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Ens_Grad</h3>
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig1ab.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Como a rede neural do <i>Ens_Grad</i> opera?</h3>
+            </section>
+
+            <section>
+                <h5>Rede Neural Simples</h5>
+                <br>
+				  	    <img data-src="img/alpha1.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha0.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/lincon.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha2.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+                <h5>Rede Neural Convolucional</h5>
+                <br>
+				  	    <img data-src="img/alpha3.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha4.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha5.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha6.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha7.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha8.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha9.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/alpha10.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h5>Mas por que estamos analisando imagens?</h5>
+                <br>
+                <h6><small>Estamos preocupados com Anticorpos, não imagens!</small></h6>
+            </section>
+
+            <section>
+				  	    <img data-src="img/fabsequence.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+                <h6>One Hot Encoding</h6>
+                <br>
+				  	    <img data-src="img/onehot.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/aa_mapper.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h5>Gerando novas sequências a partir de seeds</h5>
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig2.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h5>Otimização por Gradient Ascent</h5>
+            </section>
+
+            <!-- <section>
+				  	     <img data-src="img/mse.png" style="margin: 0 auto 4rem auto;">
+                 </section> -->
+
+            <section>
+				  	    <img data-src="img/gradient_descent.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Pergunta 1</h2>
+                <br>
+                <h4><small>Um modelo computacional consegue prever se anticorpos nunca antes vistos serão enriquecidos em um processo de seleção por afinidade?</small></h4>
+            </section>
+
+            <section>
+                <h5>Treinando o Ens_Grad com o <em style="color:orange">Ranibizumab</em></h5>
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig1.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig1_text.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig3.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Pergunta 2</h2>
+                <br>
+                <h4><small>Um modelo computacional consegue selecionar anticorpos que tenham afinidade por apenas uma molécula alvo?</small></h4>
+            </section>
+
+            <section>
+                <h5>Treinando o Ens_Grad com <em style="color:orange">Trastuzumab</em> <em style="color:orange">Etanercept</em> e <em style="color:orange">Bevacizumab</em>
+                </h5>
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig4.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Pergunta 3</h2>
+                <br>
+                <h4><small>Um modelo computacional consegue criar anticorpos que tenham maior afinidade pela molécula alvo do que aqueles que foram propostos por experimentos de phage-display?</small></h4>
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig5.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/table2.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/figS1.png" style="margin: 0 auto 4rem auto;">
+            </section>
+
+            <section>
+				  	    <img data-src="img/fig1f.png" style="margin: 0 auto 4rem auto;">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Discussão Final</h2>
+            </section>
+
+            <section>
+                <h3>Conclusões do Artigo</h3>
+                <br>
+                <div class="fragment fade-in" style="text-align:left">Modelos Computacionais são efetivos <em style="color:orange">modelar novos anticorpos</em>;</div>
+                <br>
+                <div class="fragment fade-in" style="text-align:left">Modelos Computacionais são efetivos para <em style="color:orange">otimizar anticorpos</em>;</div>
+                <br>
+                <div class="fragment fade-in" style="text-align:left">Modelos Computacionais são efetivos para <em style="color:orange">filtrar anticorpos com afinidade desejada</em>.</div>
+            </section>
+        </section>
+
+        <section>
+            <h1>Obrigado!</h1>
+        </section>
+
 			</div>
+
 		</div>
 
 		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
 		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
 			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
 			});
+
 		</script>
+
 	</body>
 </html>
